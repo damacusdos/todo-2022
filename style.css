@@ -35,16 +35,30 @@ h1 {
   padding: 0px 2rem;
 }
 
+li {
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+li label {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 input[type="checkbox"] {
   height: 0;
   width: 0;
   margin-right: 1.5rem;
 }
 
-span {
+.checkbox {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
+  transform: translateY(-50%);
   width: 15px;
   height: 15px;
   border: 2px solid black;
@@ -80,8 +94,10 @@ span {
   transform: translate(-25%, 0) rotate(315deg);
 }
 
-label {
-  position: relative;
+li span {
+  display: block;
+  text-align: left;
+  word-break: break-word;
 }
 
 .insert-section {
@@ -97,6 +113,7 @@ label {
   font-size: 1rem;
   font-family: "IBM Plex Mono", monospace;
   font-style: italic;
+  width: 50%;
 }
 
 .add-todo::placeholder {
@@ -113,41 +130,15 @@ label {
 
 .highlight {
   color: rgb(61, 61, 61);
-}
-
-.highlight::after {
-  content: "";
-  display: block;
-  height: 0px;
-  width: calc(100% + 20px);
-  border: 1px solid black;
-  border-radius: 100%;
-  position: absolute;
-  top: 50%;
-  left: -10px;
-  transform: translate(-50% -50%);
-}
-
-li {
-  padding: 1rem;
-  position: relative;
-  display: flex;
-  align-items: center;
+  text-decoration: line-through 3px rgb(192, 25, 25);
 }
 
 button {
-  width: 20px;
-  height: 20px;
   border: none;
   background: transparent;
-  appearance: none;
-  /* display: none; */
+  margin-left: 1.5rem;
 }
 
-button:hover::after {
-  content: "x";
-  display: block;
-  width: 20px;
-  height: 20px;
+.delete-icon:hover {
   cursor: pointer;
 }

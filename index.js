@@ -1,21 +1,23 @@
 const list = document.querySelector("ul");
 const input = document.querySelector(".add-todo");
 
+const deleteIcon = `<img class="delete-icon" src="https://img.icons8.com/material-rounded/24/000000/filled-trash.png"/>`;
+
 const todos = [
   {
     key: "1",
     done: false,
-    value: "item 1",
+    value: "Complete react form component",
   },
   {
     key: "2",
     done: false,
-    value: "item 2",
+    value: "Grocery shopping",
   },
   {
     key: "3",
     done: false,
-    value: "long long long text item",
+    value: "Gift shopping for Stephanie",
   },
 ];
 
@@ -24,10 +26,11 @@ function createListItem(key, text) {
   const label = document.createElement("label");
   const checkboxInput = document.createElement("input");
   const checkbox = document.createElement("span");
+  const itemText = document.createElement("span");
   const button = document.createElement("button");
 
   checkboxInput.setAttribute("type", "checkbox");
-  checkboxInput.classList.add("checkbox");
+  checkbox.classList.add("checkbox");
   item.setAttribute("id", key);
 
   checkboxInput.addEventListener("change", (e) => {
@@ -35,12 +38,15 @@ function createListItem(key, text) {
     checkItem(item);
   });
 
+  itemText.append(text);
+
+  button.innerHTML = deleteIcon;
   button.addEventListener("click", (e) => {
     const item = e.target.closest("li");
     deleteItem(item);
   });
 
-  item.appendChild(label).append(checkboxInput, checkbox, text, button);
+  item.appendChild(label).append(checkboxInput, checkbox, itemText, button);
   return item;
 }
 
